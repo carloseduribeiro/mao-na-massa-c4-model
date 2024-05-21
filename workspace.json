@@ -1,0 +1,384 @@
+{
+  "configuration" : {
+    "scope" : "SoftwareSystem"
+  },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedAgent" : "structurizr-javascript",
+  "lastModifiedDate" : "2024-05-21T01:46:14Z",
+  "model" : {
+    "people" : [ {
+      "description" : "Pessoa que escreve conteúdo para o site.",
+      "id" : "1",
+      "location" : "Unspecified",
+      "name" : "Editor",
+      "properties" : {
+        "structurizr.dsl.identifier" : "writer"
+      },
+      "relationships" : [ {
+        "description" : "Escreve conteúdo em",
+        "destinationId" : "5",
+        "id" : "13",
+        "properties" : {
+          "structurizr.dsl.identifier" : "20e08f2c-ea15-40e4-870a-53821d4f26c6"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Escreve conteúdo em",
+        "destinationId" : "3",
+        "id" : "14",
+        "linkedRelationshipId" : "13",
+        "sourceId" : "1"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "Pessoa que consome as notícias do site.",
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "Leitor",
+      "properties" : {
+        "structurizr.dsl.identifier" : "reader"
+      },
+      "relationships" : [ {
+        "description" : "Consome notícias e conteúdo em",
+        "destinationId" : "5",
+        "id" : "10",
+        "properties" : {
+          "structurizr.dsl.identifier" : "ca45f94d-49e3-4d9a-a001-7a9295b86de4"
+        },
+        "sourceId" : "2",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Consome notícias e conteúdo em",
+        "destinationId" : "3",
+        "id" : "11",
+        "linkedRelationshipId" : "10",
+        "sourceId" : "2"
+      }, {
+        "description" : "Consome notícias e conteúdo em",
+        "destinationId" : "4",
+        "id" : "12",
+        "properties" : {
+          "structurizr.dsl.identifier" : "59a38f7a-5d23-434c-b552-fa0beb85a54e"
+        },
+        "sourceId" : "2",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "description" : "Android | iOS",
+        "documentation" : { },
+        "id" : "4",
+        "name" : "Aplicativo móvel",
+        "properties" : {
+          "structurizr.dsl.identifier" : "mobile"
+        },
+        "relationships" : [ {
+          "description" : "Consome notícias e conteúdo em",
+          "destinationId" : "5",
+          "id" : "15",
+          "properties" : {
+            "structurizr.dsl.identifier" : "b7bc6026-b5a3-4470-a923-ae21daacbf82"
+          },
+          "sourceId" : "4",
+          "tags" : "Relationship",
+          "technology" : "HTTPS/JSON"
+        } ],
+        "tags" : "Element,Container,Mobile App",
+        "technology" : "Permite acesso ao conteúdo e as notícias do portal."
+      }, {
+        "description" : "Python e Django",
+        "documentation" : { },
+        "id" : "5",
+        "name" : "Portal de notícias",
+        "properties" : {
+          "structurizr.dsl.identifier" : "portal"
+        },
+        "relationships" : [ {
+          "description" : "Lê de e escreve em",
+          "destinationId" : "6",
+          "id" : "16",
+          "properties" : {
+            "structurizr.dsl.identifier" : "7ea1f12e-e29e-4533-a4cb-5b54f622dcd8"
+          },
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "PostgreSQL Protocol"
+        }, {
+          "description" : "Lê de e escreve em",
+          "destinationId" : "7",
+          "id" : "17",
+          "properties" : {
+            "structurizr.dsl.identifier" : "63681858-03e6-4f3b-8f88-002862b2b912"
+          },
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "HTTPS/JSON"
+        }, {
+          "description" : "Envia evento de adição de nova imagem para",
+          "destinationId" : "8",
+          "id" : "20",
+          "properties" : {
+            "structurizr.dsl.identifier" : "c94bd27f-1a79-4010-aae0-74a0400ce1ed"
+          },
+          "sourceId" : "5",
+          "tags" : "Relationship,async",
+          "technology" : "AMQP"
+        }, {
+          "description" : "Consome conteúdo estático de",
+          "destinationId" : "7",
+          "id" : "21",
+          "properties" : {
+            "structurizr.dsl.identifier" : "35e443ae-b997-4ca5-986e-781d4008c9d0"
+          },
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "HTTPS/JSON"
+        } ],
+        "tags" : "Element,Container,Web Browser",
+        "technology" : "Site que fornece as notícias e conteúdos. Possui área acessível somente para editores."
+      }, {
+        "description" : "AWS RDS/PostgreSQL",
+        "documentation" : { },
+        "id" : "6",
+        "name" : "Banco de dados SQL",
+        "properties" : {
+          "structurizr.dsl.identifier" : "db"
+        },
+        "tags" : "Element,Container,Database,Amazon Web Services - RDS",
+        "technology" : "Armazena as informações dos usuários e conteúdo."
+      }, {
+        "description" : "Armazena imagens que serão utilizadas nas notícias e no conteúdo do portal.",
+        "documentation" : { },
+        "id" : "7",
+        "name" : "Armazenamento de imagens",
+        "properties" : {
+          "structurizr.dsl.identifier" : "storage"
+        },
+        "tags" : "Element,Container,Storage,Amazon Web Services - Simple Storage Service",
+        "technology" : "Bucket S3"
+      }, {
+        "description" : "Recebe eventos de criação de imagem para serem consumidos pelo processador.",
+        "documentation" : { },
+        "id" : "8",
+        "name" : "Fila de processamento em segundo plano",
+        "properties" : {
+          "structurizr.dsl.identifier" : "queue"
+        },
+        "tags" : "Element,Container,Amazon Web Services - Simple Queue Service",
+        "technology" : "AWS SQS"
+      }, {
+        "description" : "Processa imagens otimizando-as e gerando thumbnails.",
+        "documentation" : { },
+        "id" : "9",
+        "name" : "Processador de Imagens",
+        "properties" : {
+          "structurizr.dsl.identifier" : "worker"
+        },
+        "relationships" : [ {
+          "description" : "Consome eventos de",
+          "destinationId" : "8",
+          "id" : "18",
+          "properties" : {
+            "structurizr.dsl.identifier" : "4865b8ca-1d99-426e-b98f-ae91f1e7ce22"
+          },
+          "sourceId" : "9",
+          "tags" : "Relationship,async",
+          "technology" : "AMQP"
+        }, {
+          "description" : "Escreve imagens em",
+          "destinationId" : "7",
+          "id" : "19",
+          "properties" : {
+            "structurizr.dsl.identifier" : "ad814ff1-7f2e-41fc-b9ac-e0c7e58be178"
+          },
+          "sourceId" : "9",
+          "tags" : "Relationship,async",
+          "technology" : "HTTPS/JSON"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Python"
+      } ],
+      "documentation" : { },
+      "id" : "3",
+      "location" : "Unspecified",
+      "name" : "Sistema de gerenciamento de conteúdo",
+      "properties" : {
+        "structurizr.dsl.identifier" : "cms"
+      },
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Mão na massa CMS",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlICJNw6NvIG5hIG1hc3NhIENNUyIgewoKICAgIG1vZGVsIHsKICAgICAgICB3cml0ZXIgPSBwZXJzb24gIkVkaXRvciIgIlBlc3NvYSBxdWUgZXNjcmV2ZSBjb250ZcO6ZG8gcGFyYSBvIHNpdGUuIgogICAgICAgIHJlYWRlciA9IHBlcnNvbiAiTGVpdG9yIiAiUGVzc29hIHF1ZSBjb25zb21lIGFzIG5vdMOtY2lhcyBkbyBzaXRlLiIKCiAgICAgICAgY21zID0gc29mdHdhcmVTeXN0ZW0gIlNpc3RlbWEgZGUgZ2VyZW5jaWFtZW50byBkZSBjb250ZcO6ZG8iIHsKICAgICAgICAgICAgbW9iaWxlID0gY29udGFpbmVyICJBcGxpY2F0aXZvIG3Ds3ZlbCIgIkFuZHJvaWQgfCBpT1MiICJQZXJtaXRlIGFjZXNzbyBhbyBjb250ZcO6ZG8gZSBhcyBub3TDrWNpYXMgZG8gcG9ydGFsLiIgIk1vYmlsZSBBcHAiCiAgICAgICAgICAgIHBvcnRhbCA9IGNvbnRhaW5lciAiUG9ydGFsIGRlIG5vdMOtY2lhcyIgIlB5dGhvbiBlIERqYW5nbyIgIlNpdGUgcXVlIGZvcm5lY2UgYXMgbm90w61jaWFzIGUgY29udGXDumRvcy4gUG9zc3VpIMOhcmVhIGFjZXNzw612ZWwgc29tZW50ZSBwYXJhIGVkaXRvcmVzLiIgIldlYiBCcm93c2VyIgogICAgICAgICAgICBkYiA9IGNvbnRhaW5lciAiQmFuY28gZGUgZGFkb3MgU1FMIiAiQVdTIFJEUy9Qb3N0Z3JlU1FMIiAiQXJtYXplbmEgYXMgaW5mb3JtYcOnw7VlcyBkb3MgdXN1w6FyaW9zIGUgY29udGXDumRvLiIgIkRhdGFiYXNlLCBBbWF6b24gV2ViIFNlcnZpY2VzIC0gUkRTIgogICAgICAgICAgICBzdG9yYWdlID0gY29udGFpbmVyICJBcm1hemVuYW1lbnRvIGRlIGltYWdlbnMiICJBcm1hemVuYSBpbWFnZW5zIHF1ZSBzZXLDo28gdXRpbGl6YWRhcyBuYXMgbm90w61jaWFzIGUgbm8gY29udGXDumRvIGRvIHBvcnRhbC4iICJCdWNrZXQgUzMiICJTdG9yYWdlLCBBbWF6b24gV2ViIFNlcnZpY2VzIC0gU2ltcGxlIFN0b3JhZ2UgU2VydmljZSIKICAgICAgICAgICAgcXVldWUgPSBjb250YWluZXIgIkZpbGEgZGUgcHJvY2Vzc2FtZW50byBlbSBzZWd1bmRvIHBsYW5vIiAiUmVjZWJlIGV2ZW50b3MgZGUgY3JpYcOnw6NvIGRlIGltYWdlbSBwYXJhIHNlcmVtIGNvbnN1bWlkb3MgcGVsbyBwcm9jZXNzYWRvci4iICJBV1MgU1FTIiAiQW1hem9uIFdlYiBTZXJ2aWNlcyAtIFNpbXBsZSBRdWV1ZSBTZXJ2aWNlIgogICAgICAgICAgICB3b3JrZXIgPSBjb250YWluZXIgIlByb2Nlc3NhZG9yIGRlIEltYWdlbnMiICJQcm9jZXNzYSBpbWFnZW5zIG90aW1pemFuZG8tYXMgZSBnZXJhbmRvIHRodW1ibmFpbHMuIiAiUHl0aG9uIgogICAgICAgIH0KCiAgICAgICAgcmVhZGVyIC0+IHBvcnRhbCAiQ29uc29tZSBub3TDrWNpYXMgZSBjb250ZcO6ZG8gZW0iCiAgICAgICAgcmVhZGVyIC0+IG1vYmlsZSAiQ29uc29tZSBub3TDrWNpYXMgZSBjb250ZcO6ZG8gZW0iCiAgICAgICAgd3JpdGVyIC0+IHBvcnRhbCAiRXNjcmV2ZSBjb250ZcO6ZG8gZW0iCiAgICAgICAgbW9iaWxlIC0+IHBvcnRhbCAiQ29uc29tZSBub3TDrWNpYXMgZSBjb250ZcO6ZG8gZW0iICJIVFRQUy9KU09OIgogICAgICAgIHBvcnRhbCAtPiBkYiAiTMOqIGRlIGUgZXNjcmV2ZSBlbSIgIlBvc3RncmVTUUwgUHJvdG9jb2wiCiAgICAgICAgcG9ydGFsIC0+IHN0b3JhZ2UgIkzDqiBkZSBlIGVzY3JldmUgZW0iICJIVFRQUy9KU09OIgogICAgICAgIHdvcmtlciAtPiBxdWV1ZSAiQ29uc29tZSBldmVudG9zIGRlIiAiQU1RUCIgImFzeW5jIgogICAgICAgIHdvcmtlciAtPiBzdG9yYWdlICJFc2NyZXZlIGltYWdlbnMgZW0iICJIVFRQUy9KU09OIiAiYXN5bmMiCiAgICAgICAgcG9ydGFsIC0+IHF1ZXVlICJFbnZpYSBldmVudG8gZGUgYWRpw6fDo28gZGUgbm92YSBpbWFnZW0gcGFyYSIgIkFNUVAiICJhc3luYyIKICAgICAgICBwb3J0YWwgLT4gc3RvcmFnZSAiQ29uc29tZSBjb250ZcO6ZG8gZXN0w6F0aWNvIGRlIiAiSFRUUFMvSlNPTiIKICAgIH0KCiAgICB2aWV3cyB7CiAgICAgICAgc3lzdGVtQ29udGV4dCBjbXMgIlN5c3RlbUNvbnRleHQiIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICB9CgogICAgICAgIGNvbnRhaW5lciBjbXMgIkNvbnRhaW5lcnMiIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9sYXlvdXQgbHIKICAgICAgICB9CgogICAgICAgIHRoZW1lIGRlZmF1bHQKICAgICAgICB0aGVtZXMgaHR0cHM6Ly9zdGF0aWMuc3RydWN0dXJpenIuY29tL3RoZW1lcy9hbWF6b24td2ViLXNlcnZpY2VzLTIwMjMuMDEuMzEvaWNvbnMuanNvbgoKICAgICAgICBzdHlsZXMgewogICAgICAgICAgICByZWxhdGlvbnNoaXAgIlJlbGF0aW9uc2hpcCIgewogICAgICAgICAgICAgICAgY29sb3IgI0M3QzdDNwogICAgICAgICAgICAgICAgZGFzaGVkIGZhbHNlCiAgICAgICAgICAgICAgICByb3V0aW5nIEN1cnZlZAogICAgICAgICAgICB9CiAgICAgICAgICAgIHJlbGF0aW9uc2hpcCAiYXN5bmMiIHsKICAgICAgICAgICAgICAgIGNvbG9yICNDN0M3QzcKICAgICAgICAgICAgICAgIGRhc2hlZCB0cnVlCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiRGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgIHNoYXBlIGN5bGluZGVyCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiU3RvcmFnZSIgewogICAgICAgICAgICAgICAgc2hhcGUgRm9sZGVyCiAgICAgICAgICAgICAgICBoZWlnaHQgNDAwCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiTW9iaWxlIEFwcCIgewogICAgICAgICAgICAgICAgc2hhcGUgTW9iaWxlRGV2aWNlTGFuZHNjYXBlCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiV2ViIEJyb3dzZXIiIHsKICAgICAgICAgICAgICAgIHNoYXBlIFdlYkJyb3dzZXIKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KCiAgICBjb25maWd1cmF0aW9uIHsKICAgICAgICBzY29wZSBzb2Z0d2FyZXN5c3RlbQogICAgfQoKfQo="
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "lastSavedView" : "SystemContext",
+      "metadataSymbols" : "SquareBrackets",
+      "styles" : {
+        "elements" : [ {
+          "shape" : "Cylinder",
+          "tag" : "Database"
+        }, {
+          "height" : 400,
+          "shape" : "Folder",
+          "tag" : "Storage"
+        }, {
+          "shape" : "MobileDeviceLandscape",
+          "tag" : "Mobile App"
+        }, {
+          "shape" : "WebBrowser",
+          "tag" : "Web Browser"
+        } ],
+        "relationships" : [ {
+          "color" : "#c7c7c7",
+          "dashed" : false,
+          "routing" : "Curved",
+          "tag" : "Relationship"
+        }, {
+          "color" : "#c7c7c7",
+          "dashed" : true,
+          "tag" : "async"
+        } ]
+      },
+      "terminology" : { },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json", "https://static.structurizr.com/themes/amazon-web-services-2023.01.31/icons.json" ]
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 2600,
+        "width" : 3120
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 950,
+        "y" : 200
+      }, {
+        "id" : "2",
+        "x" : 200,
+        "y" : 1384
+      }, {
+        "id" : "4",
+        "x" : 950,
+        "y" : 1079
+      }, {
+        "id" : "5",
+        "x" : 1700,
+        "y" : 1359
+      }, {
+        "id" : "6",
+        "x" : 2450,
+        "y" : 2009
+      }, {
+        "id" : "7",
+        "x" : 2450,
+        "y" : 1309
+      }, {
+        "id" : "8",
+        "x" : 2450,
+        "y" : 709
+      }, {
+        "id" : "9",
+        "x" : 1700,
+        "y" : 734
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Containers",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "10",
+        "vertices" : [ {
+          "x" : 1400,
+          "y" : 1529
+        } ]
+      }, {
+        "id" : "12"
+      }, {
+        "id" : "13",
+        "vertices" : [ {
+          "x" : 1400,
+          "y" : 529
+        }, {
+          "x" : 1700,
+          "y" : 1184
+        } ]
+      }, {
+        "id" : "15"
+      }, {
+        "id" : "16"
+      }, {
+        "id" : "17",
+        "vertices" : [ {
+          "x" : 2300,
+          "y" : 1659
+        } ]
+      }, {
+        "id" : "18"
+      }, {
+        "id" : "19"
+      }, {
+        "id" : "20"
+      }, {
+        "id" : "21",
+        "vertices" : [ {
+          "x" : 2300,
+          "y" : 1359
+        } ]
+      } ],
+      "softwareSystemId" : "3"
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 1300,
+        "width" : 1550
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 199,
+        "y" : 199
+      }, {
+        "id" : "2",
+        "x" : 949,
+        "y" : 199
+      }, {
+        "id" : "3",
+        "x" : 574,
+        "y" : 799
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "SystemContext",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "11"
+      }, {
+        "id" : "14"
+      } ],
+      "softwareSystemId" : "3"
+    } ]
+  }
+}
